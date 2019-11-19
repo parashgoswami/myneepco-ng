@@ -1,0 +1,25 @@
+<div fxFlex fxLayout="row" fxLayoutAlign="center center" id="login">
+  <mat-card fxFlex.gt-md="35" fxFlex.md="40" fxFlex.sm="60" fxFlex.lt-sm="90">
+    <mat-card-title>MyNeepco Portal </mat-card-title>
+    <form fxLayout="column" [formGroup]="loginForm" fxLayoutAlign="center center" (ngSubmit)="login()">
+      <mat-form-field class="login-full-width">
+        <input matInput type="text" placeholder="Login ID" value="" formControlName="loginId" required>
+        <mat-error *ngIf="(loginId.dirty||loginId.touched) && loginId.errors?.required">
+          Login ID is required
+        </mat-error>
+        <mat-error *ngIf="(loginId.dirty||loginId.touched) && loginId.errors?.pattern">
+          Employee code should be six digits
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="login-full-width">
+        <input matInput type="password" placeholder="Password" value="" formControlName="password" required>
+        <mat-error *ngIf="(password.dirty||password.touched) && password.errors?.required">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <button class="login-btn" [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+  </mat-card>
+
+</div>
